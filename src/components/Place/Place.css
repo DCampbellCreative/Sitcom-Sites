@@ -1,0 +1,22 @@
+.main-image {
+  height: 500px;
+  margin-right: 1em;
+}
+
+.row {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  width: 80%;
+}
+
+.column {
+  justify-content: center;
+  display: flex;
+  margin: auto 1em auto auto;
+  flex-direction: column;
+  width: 50%;
+  text-align: left;
+}
