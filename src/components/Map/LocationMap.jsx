@@ -5,10 +5,12 @@ import './LocationMap.css';
 
 export const LocationMap = (props) => {
 	return (
-		<Map height={500} width={500} defaultCenter={props.center} defaultZoom={13}>
-			<Marker width={50}
-				anchor={props.center}
-			/>
-		</Map>
+		<div className='w-1/3'>
+			<Map defaultCenter={props.center} defaultZoom={13}>
+				<Marker width={50}
+					anchor={props.center}
+				/>
+			</Map>
+		</div>
 	);
 };

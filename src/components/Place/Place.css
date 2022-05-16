@@ -1,6 +1,9 @@
-.main-image {
+/* .main-image {
   height: 500px;
+  width: auto;
+
   margin-right: 1em;
+  display: flex;
 }
 
 .row {
@@ -19,4 +22,4 @@
   flex-direction: column;
   width: 50%;
   text-align: left;
-}
+} */

@@ -7,7 +7,7 @@ const DUMMY_DATA = [
 	{
 		id: "p1",
 		title: "Frasier's Apartment",
-		description: "Located in the fictional Elliott Bay Towers, the three-bedroom, three-bath luxury condo has view of the Space Needle and Seattle skyline so amazing, it’s no surprise that it’s entirely fictional. The backdrop image used was actually taken at Kerry Park and would be impossible from any real condo.",
+		description: "Located in the fictional Elliott Bay Towers, The apartment has 3 bedrooms and a large sitting room, with an adjacent kitchen and a fireplace. There are two steps up to a landing with a terrace overlooking the city with a view of the Space Needle. A swanky 2000 square foot apartment today in Seattle would go for $8,360 a month on average, or roughly 3 million to purchase.",
 		imageUrl:
 			"https://live.staticflickr.com/65535/52073623000_7c9842f298_b.jpg",
 		address: "20 W 34th St, New York, NY 10001",
@@ -35,26 +35,26 @@ const DUMMY_DATA = [
 	},
 ];
 
-
 export const Place = () => {
 	return (
-		<div className="place-container">
-			<h1 className="title">{DUMMY_DATA[0].title}</h1>
-			<div className='row'>
-				<img src={DUMMY_DATA[0].imageUrl} alt={DUMMY_DATA[0].title} className="main-image" />
+		<div className="container mx-auto">
+			<h1 className="text-2xl mb-3 mt-3 font-semibold font-Raleway text-left">{DUMMY_DATA[0].title}</h1>
+
+			<div className="flex flex-row mb-5">
+				<img className="w-2/3 mr-8 rounded-lg" src={DUMMY_DATA[0].imageUrl} alt={DUMMY_DATA[0].title} />
 				<LocationMap center={DUMMY_DATA[0].location} />
 			</div>
 
-			<div className='row'>
+			<div className="flex flex-row">
 
-				<div className='column'>
-					<h3>Description</h3>
-					<p>{DUMMY_DATA[0].description}</p>
+				<div className="w-1/2 mr-10">
+					<h3 className="text-left text-2xl mb-3 font-semibold font-Raleway">Description</h3>
+					<p className="text-justify font-Raleway">{DUMMY_DATA[0].description}</p>
 				</div>
 
-				<div className='column'>
-					<h3>Residents</h3>
-					<div className="resident-avatars">
+				<div className="w-1/2">
+					<h3 className="text-left mb-3 text-2xl font-semibold font-Raleway">Residents</h3>
+					<div div className="flex flex-row">
 						{DUMMY_DATA[0].residents.map((data) => (
 							<Avatar
 								key={data.name}
