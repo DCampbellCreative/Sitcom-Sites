@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar } from "../Avatar/Avatar";
 import { LocationMap } from "../Map/LocationMap";
 import "./Place.css"
@@ -36,6 +36,7 @@ const DUMMY_DATA = [
 ];
 
 export const Place = () => {
+
 	return (
 		<div className="container mx-auto">
 			<h1 className="text-2xl mb-3 mt-3 font-semibold font-Raleway text-left">{DUMMY_DATA[0].title}</h1>
