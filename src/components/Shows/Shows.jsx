@@ -1,70 +1,39 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React from "react";
+import { Outlet, Link } from "react-router-dom";
+
 import './Shows.css'
-// const client = axios.create({
-// 	baseURL:
-// 		"https://secret-bastion-23687.herokuapp.com/"
-// })
 
-export const Shows = () => {
-	const [shows, setShows] = useState([]);
-	// const [shows, setShows] = useState([]);
-
-	// const fetchShows = async () => {
-	// 	const result = await axios(
-	// 		"https://secret-bastion-23687.herokuapp.com/"
-	// 	)
-	// console.log(result.request.response)
-	// const data = JSON.parse(result.request.response)
-	// const parsedData = JSON.parse(data)
-	// console.log(data)
-	// 	setShows(result.request.response)
-	// }
-
-	// useEffect(() => {
-	// 	if (!shows.length) {
-	// 		fetchShows();
-	// 	}
-	// }, [shows]);
-
-	// console.log(Object.keys(shows));
-	// console.log(JSON.stringify(shows));
-	// console.log(shows);
-
-	useEffect(() => {
-		fetch("https://secret-bastion-23687.herokuapp.com/")
-			.then(response => response.json())
-			.then(data => setShows(data))
-	}, [])
-
-	// console.log(shows)
-	// console.log(shows.map(show => (show)));
-
+export const Shows = (props) => {
 	return (
 		<React.Fragment>
 			<ul>
 				<li>
-
-					{shows?.map(show => {
+					{props.shows?.map(show => {
 						return (
-							<div key={show._id} className="container mx-auto flex overflow-hidden">
-								<div className="card w-96 border-2 rounded-md m-2" >
-									<img className="flex show-inner" src={show.logo} alt="fraiserlogo"></img>
-									<h3 className="text-2xl font-semibold font-Raleway">{show.title}</h3>
-									<p className="text-md font-Raleway">{show.description}</p>
-									<h3 className="text-2xl font-semibold font-Raleway">Places</h3>
-									<ul>
-										{show.places.map(place => {
-											return <li key={place._id} className="h-10 justify-self-center align-self-center text-xl font-Raleway m-1 border-t-2">{place.title}</li>
-
+							<div key={show._id} className="container mx-auto flex">
+								<div className="card w-96 border-4 bg-gradient-to-b from-slate-400 to-slate-100 rounded-md m-2" >
+									<div className="flex p-10 pb-5 rounded-md">
+										<img src={show.logo} alt="fraiserlogo"></img>
+									</div>
+									<h3 className="text-2xl font-semibold font-Raleway mb-2">{show.title}</h3>
+									<p className="text-md font-Raleway mb-3 text-left m-4">{show.description}</p>
+									<h3 className="text-2xl font-semibold font-Raleway mb-2">Places</h3>
+									<div className="flex-col justify-center mb-3">
+										{show.places?.map(place => {
+											return <Link key={place._id} to={`/${place._id}`} state={[place]}
+												className="text-m font-Raleway m-1 rounded bg-transparent p-1 justify-center self-center w-1/2 border-double border-4 border-sky-500">
+												{place.title}
+											</Link>
 										})}
-									</ul>
+									</div>
 								</div>
 							</div>
 						)
 					})}
 				</li>
 			</ul>
+			<Outlet />
+
 		</React.Fragment>
 
 
