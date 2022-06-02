@@ -1,11 +1,11 @@
 import React from "react";
 import { Avatar } from "../Avatar/Avatar";
 import { LocationMap } from "../Map/LocationMap";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Place.css"
 
 export const Place = () => {
-	// const params = useParams();
+	const navigate = useNavigate();
 	const location = useLocation();
 	const data = location.state;
 	console.log(data);
@@ -14,7 +14,11 @@ export const Place = () => {
 	return (
 		<div className="container mx-auto">
 			{data?.map(place => {
-				return <React.Fragment><h1 className="text-2xl mb-3 mt-3 font-semibold font-Raleway text-left">{place.title}</h1>
+				return <React.Fragment>
+					<div className="flex flex-row">
+						<h1 className="w-1/2 text-2xl mb-3 mt-3 font-semibold font-Raleway text-left">{place.title}</h1>
+						<button className="w-1/2 text-xl mb-3 mt-3 font-light font-Raleway text-right" onClick={() => navigate(-1)}>Back</button>
+					</div>
 
 					<div className="flex flex-row mb-5">
 						<img className="w-2/3 mr-8 rounded-lg" src={place.imageUrl} alt={place.title} />
