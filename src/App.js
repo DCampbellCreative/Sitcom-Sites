@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Place } from "./components/Place/Place";
 import { Navbar } from "./components/Navbar/Navbar";
 import { Shows } from "./components/Shows/Shows";
+import { Character } from "./components/Character/Character";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -21,6 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Shows shows={shows} />} />
           <Route path=":placeId" element={<Place />} />
+          {/* <Route path=":characterId" element={<Character />} /> */}
           {/* <Route
               path="*"
               element={
