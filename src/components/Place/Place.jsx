@@ -9,9 +9,11 @@ export const Place = () => {
 	const location = useLocation();
 	const data = location.state;
 
+	// separates data 
 	const place = data[0];
 	const characters = data[1];
 
+	// filters data for each of array of characters by object id
 	const residents = characters?.filter(char => place.residents.includes(char._id))
 	const regulars = characters?.filter(char => place.regulars.includes(char._id))
 	const employees = characters?.filter(char => place.employees.includes(char._id))
@@ -19,6 +21,7 @@ export const Place = () => {
 	const [showModal, setShowModal] = useState(false);
 	const [selectedData, setSelectedData] = useState({});
 
+	// passes only data for selected character to modal
 	const handleClick = (selectedRec) => {
 		setSelectedData(selectedRec);
 		setShowModal(true);
@@ -45,6 +48,7 @@ export const Place = () => {
 						<p className="text-justify text-sm lg:text-lg font-Raleway">{place.description}</p>
 					</div>
 
+					{/* renders character list by type if array is > 0 */}
 					{residents?.length > 0 ?
 						<div className="width-full lg:w-1/2">
 							<h3 className="text-left mb-3 text-xl lg:text-2xl font-semibold font-Raleway">Residents</h3>
@@ -65,7 +69,6 @@ export const Place = () => {
 							</div> </div> :
 						<div></div>
 					}
-
 
 					{regulars.length > 0 ?
 						<div className="width-full lg:w-1/2">
