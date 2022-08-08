@@ -5,7 +5,7 @@ import './LocationMap.css';
 
 export const LocationMap = (props) => {
 	return (
-		<div className='w-1/3'>
+		<div className='w-full'>
 			<Map defaultCenter={props.center} defaultZoom={13}>
 				<Marker width={50}
 					anchor={props.center}
