@@ -10,9 +10,9 @@ export const Character = ({ details, showModal, setShowModal }) => {
 				>
 					X
 				</button>
-				<img className="flex self-center mb-2 border-4 border-cyan-700 rounded-full w-72" src={details?.avatarUrl} alt={details?.name}></img>
-				<div className="mb-2 font-Raleway text-xl">{details?.name}</div>
-				<div className="text-justify font-Raleway font-light">{details?.description}</div>
+				<img className="flex self-center mb-2 border-4 border-slate-500 rounded-full w-72" src={details?.avatarUrl} alt={details?.name}></img>
+				<div className="mb-2 font-Work tracking-wide font-semibold uppercase text-xl">{details?.name}</div>
+				<div className="text-justify font-Hind">{details?.description}</div>
 			</div>
 		</div>)
 

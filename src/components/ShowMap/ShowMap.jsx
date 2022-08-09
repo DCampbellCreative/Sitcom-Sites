@@ -37,11 +37,12 @@ export const ShowMap = (props) => {
 			longitude: centralLongitude * 180 / Math.PI
 		};
 	}
+
 	return (
 		<Map defaultCenter={[47.6150, -122.3405]} defaultZoom={13}>
 			{props.show?.places?.map((place => {
-				return <Overlay anchor={place.location} offset={[15, 0]}>
-					<Link key={place._id} to={`/${place._id}`} state={[place, props.show?.characters]} className='relative z-10000 text-slate-500 font-Raleway font-semibold p-1 bg-slate-100/50 border-2 rounded-md border-slate-500 hover:p-3 hover:z-10 hover:bg-slate-100 hover:cursor-pointer'>
+				return <Overlay key={place._id} anchor={place.location} offset={[15, 0]}>
+					<Link key={place._id} to={`/${place._id}`} state={[place, props.show?.characters]} className='leading-tight text-white font-Hind font-semibold p-1 bg-slate-400/75 rounded-t-lg rounded-br-lg hover:p-3 hover:bg-slate-400 hover:cursor-pointer hover:shadow-lg duration-200 ease-in-out'>
 						{place.title}
 					</Link>
 				</Overlay>
