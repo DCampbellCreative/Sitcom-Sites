@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Character } from "../Character/Character";
-import { LocationMap } from "../Map/LocationMap";
-import { useLocation, useNavigate, Link, Outlet } from "react-router-dom";
+import { PlaceMap } from "../PlaceMap/PlaceMap";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Place.css"
 
 export const Place = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 	const data = location.state;
+
+	console.log(data)
 
 	// separates data 
 	const place = data[0];
@@ -39,7 +41,7 @@ export const Place = () => {
 
 				<div className="flex flex-row mb-5">
 					<img className="w-2/3 mr-8 rounded-lg" src={place.imageUrl} alt={place.title} />
-					<LocationMap className="w-1/3 h-96" center={place.location} />
+					<PlaceMap className="w-1/3 h-96" center={place.location} />
 				</div>
 
 				<div className="flex flex-col lg:flex-row">
@@ -114,7 +116,7 @@ export const Place = () => {
 
 				</div>
 			</React.Fragment >
-			<Outlet />
+
 		</div >
 	)
 }
