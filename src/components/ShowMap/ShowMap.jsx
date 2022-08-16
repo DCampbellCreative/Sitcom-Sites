@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import { Map, Overlay } from 'pigeon-maps'
 
 export const ShowMap = (props) => {
+	const place = props?.show.places.map(place => { return place })
+	const coords = place?.map((item) => {
+		return { latitude: item.location[0], longitude: item.location[1] }
+	})
+
+	console.log(averageGeolocation(coords))
 
 	function averageGeolocation(coords) {
 		if (coords.length === 1) {
@@ -32,14 +38,14 @@ export const ShowMap = (props) => {
 		let centralSquareRoot = Math.sqrt(x * x + y * y);
 		let centralLatitude = Math.atan2(z, centralSquareRoot);
 
-		return {
-			latitude: centralLatitude * 180 / Math.PI,
-			longitude: centralLongitude * 180 / Math.PI
-		};
+		return [
+			centralLatitude * 180 / Math.PI,
+			centralLongitude * 180 / Math.PI
+		];
 	}
 
 	return (
-		<Map defaultCenter={[47.6150, -122.3405]} defaultZoom={13}>
+		<Map defaultCenter={averageGeolocation(coords)} defaultZoom={12}>
 			{props.show?.places?.map((place => {
 				return <Overlay key={place._id} anchor={place.location} offset={[15, 0]}>
 					<Link key={place._id} to={`/${place._id}`} state={[place, props.show?.characters]} className='leading-tight text-white font-Hind font-semibold p-1 bg-slate-400/75 rounded-t-lg rounded-br-lg hover:p-3 hover:bg-slate-400 hover:cursor-pointer hover:shadow-lg duration-200 ease-in-out'>

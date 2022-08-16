@@ -18,7 +18,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => setShows(data));
   }, []);
-  console.log(shows);
+  // console.log(shows);
   return (
     <div className="App">
       <Router>
