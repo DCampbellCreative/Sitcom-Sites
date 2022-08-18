@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Character } from "../Character/Character";
 import { PlaceMap } from "../PlaceMap/PlaceMap";
 import { useLocation, useNavigate } from "react-router-dom";
-import "./Place.css"
 
 export const Place = () => {
 	const navigate = useNavigate();
@@ -57,69 +56,73 @@ export const Place = () => {
 						<p className="text-justify text-sm lg:text-lg font-Hind">{place.description}</p>
 					</div>
 
-					{/* renders character list by type if array is > 0 */}
-					{residents?.length > 0 ?
-						<div className="width-full lg:w-1/2">
-							<h3 className="text-left mb-3 text-xl lg:text-2xl font-semibold font-Work">Residents</h3>
-							<div className="flex flex-row">
-								{residents?.map(character =>
-									<div className="flex flex-col mr-3" key={character._id} >
-										<button onClick={() => handleClick(character)}>
-											<img
-												className="flex border-4 border-slate-400 rounded-full w-32 shadow-md hover:border-slate-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:cursor-pointer"
-												src={character.avatarUrl}
-												alt={character.name}
-											/>
-										</button>
-										<Character key={character._id} showModal={showModal} setShowModal={setShowModal} details={selectedData} />
-										<p className="text-center font-Hind text-lg uppercase semibold">{character.name}</p>
-									</div>
-								)}
-							</div> </div> :
-						<div></div>
-					}
+					<div className="flex-col">
 
-					{regulars.length > 0 ?
-						<div className="width-full lg:w-1/2">
-							<h3 className="text-left mb-3 text-xl lg:text-2xl font-semibold font-Work">Regulars</h3>
-							<div className="flex flex-row">
-								{regulars.map(character =>
-									<div className="flex flex-col mr-3" key={character._id} >
-										<button onClick={() => handleClick(character)}>
-											<img
-												className="flex border-4 border-slate-400 rounded-full w-32 shadow-md hover:border-slate-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:cursor-pointer"
-												src={character.avatarUrl}
-												alt={character.name}
-											/>
-										</button>
-										<Character key={character._id} showModal={showModal} setShowModal={setShowModal} details={selectedData} />
-										<p className="text-center font-Hind text-lg uppercase semibold">{character.name}</p>
-									</div>
-								)}
-							</div> </div> :
-						<div></div>
-					}
+						{/* renders character list by type if array is > 0 */}
+						{residents?.length > 0 ?
+							<div className="width-full lg:w-1/2 flex-row mb-5">
+								<h3 className="text-left mb-3 text-xl lg:text-2xl font-semibold font-Work">Residents</h3>
+								<div className="flex flex-row">
+									{residents?.map(character =>
+										<div className="flex flex-col mr-3 h-36" key={character._id} >
+											<button className='w-32' onClick={() => handleClick(character)}>
+												<img
+													className="flex border-4 border-slate-400 rounded-full shadow-md hover:border-slate-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:cursor-pointer"
+													src={character.avatarUrl}
+													alt={character.name}
+												/>
+											</button>
+											<Character key={character._id} showModal={showModal} setShowModal={setShowModal} details={selectedData} />
+											<p className="text-center font-Hind text-lg uppercase semibold">{character.name}</p>
+										</div>
+									)}
+								</div> </div> :
+							<div></div>
+						}
 
-					{employees.length > 0 ?
-						<div className="width-full lg:w-1/2">
-							<h3 className="text-left mb-3 text-xl lg:text-2xl font-semibold font-Work">Employees</h3>
-							<div className="flex flex-row">
-								{employees.map(character =>
-									<div className="flex flex-col mr-3" key={character._id} >
-										<button onClick={() => handleClick(character)}>
-											<img
-												className="flex border-4 border-slate-400 rounded-full w-32 shadow-md hover:border-slate-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:cursor-pointer"
-												src={character.avatarUrl}
-												alt={character.name}
-											/>
-										</button>
-										<Character key={character._id} showModal={showModal} setShowModal={setShowModal} details={selectedData} />
-										<p className="text-center font-Hind text-lg uppercase semibold">{character.name}</p>
-									</div>
-								)}
-							</div> </div> :
-						<div></div>
-					}
+						{regulars.length > 0 ?
+							<div className="width-full lg:w-1/2 flex-row mb-5">
+								<h3 className="text-left mb-1 text-xl lg:text-2xl font-semibold font-Work">Regulars</h3>
+								<div className="flex flex-row">
+									{regulars.map(character =>
+										<div className="flex-col mr-3" key={character._id} >
+											<button className='w-32' onClick={() => handleClick(character)}>
+												<img
+													className="flex border-4 border-slate-400 rounded-full shadow-md hover:border-slate-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:cursor-pointer"
+													src={character.avatarUrl}
+													alt={character.name}
+												/>
+											</button>
+											<Character key={character._id} showModal={showModal} setShowModal={setShowModal} details={selectedData} />
+											<p className="text-center font-Hind text-lg uppercase semibold">{character.name}</p>
+										</div>
+									)}
+								</div> </div> :
+							<div></div>
+						}
+
+						{employees.length > 0 ?
+							<div className="width-full lg:w-1/2 flex-row">
+								<h3 className="text-left mb-3 text-xl lg:text-2xl font-semibold font-Work">Employees</h3>
+								<div className="flex flex-row">
+									{employees.map(character =>
+										<div className="flex flex-col mr-3" key={character._id} >
+											<button className='w-32' onClick={() => handleClick(character)}>
+												<img
+													className="flex border-4 border-slate-400 rounded-full shadow-md hover:border-slate-500 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 transition duration-150 ease-in-out hover:cursor-pointer"
+													src={character.avatarUrl}
+													alt={character.name}
+												/>
+											</button>
+											<Character key={character._id} showModal={showModal} setShowModal={setShowModal} details={selectedData} />
+											<p className="text-center font-Hind text-lg uppercase semibold">{character.name}</p>
+										</div>
+									)}
+								</div> </div> :
+							<div></div>
+						}
+
+					</div>
 
 				</div>
 			</React.Fragment >

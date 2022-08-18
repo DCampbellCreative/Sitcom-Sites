@@ -1,6 +1,5 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import "./Avatar.css"
 
 export const Avatar = () => {
 	const location = useLocation();

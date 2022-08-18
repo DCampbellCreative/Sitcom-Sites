@@ -2,15 +2,13 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { Map, Overlay } from 'pigeon-maps'
 
-export const ShowMap = (props) => {
-	const place = props?.show.places.map(place => { return place })
-	const coords = place?.map((item) => {
+export const ShowMap = ({ show }) => {
+	const coords = show?.places.map((item) => {
 		return { latitude: item.location[0], longitude: item.location[1] }
 	})
 
-	console.log(averageGeolocation(coords))
-
-	function averageGeolocation(coords) {
+	// calculate average geolocation, credited to https://gist.github.com/tlhunter
+	const averageGeolocation = (coords) => {
 		if (coords.length === 1) {
 			return coords[0];
 		}
@@ -44,15 +42,20 @@ export const ShowMap = (props) => {
 		];
 	}
 
+	console.log(averageGeolocation(coords))
+
 	return (
-		<Map defaultCenter={averageGeolocation(coords)} defaultZoom={12}>
-			{props.show?.places?.map((place => {
+		<Map key={show._id} defaultCenter={averageGeolocation(coords)} defaultZoom={12}>
+			{show?.places?.map((place => {
 				return <Overlay key={place._id} anchor={place.location} offset={[15, 0]}>
-					<Link key={place._id} to={`/${place._id}`} state={[place, props.show?.characters]} className='leading-tight text-white font-Hind font-semibold p-1 bg-slate-400/75 rounded-t-lg rounded-br-lg hover:p-3 hover:bg-slate-400 hover:cursor-pointer hover:shadow-lg duration-200 ease-in-out'>
+					<Link key={place._id} to={`/${place._id}`} state={[place, show?.characters]} className='leading-tight text-white font-Hind font-semibold p-1 bg-slate-400/75 rounded-t-lg rounded-br-lg hover:p-3 hover:bg-slate-400 hover:cursor-pointer hover:shadow-lg duration-200 ease-in-out'>
 						{place.title}
 					</Link>
 				</Overlay>
 			}))}
+			<div className='absolute bottom-0 left-0 rounded-tr-lg overflow-hidden w-auto mx-auto'>
+				<img className="w-32 lg:w-36" src={show.logo} alt={`${show.title} Logo`} />
+			</div>
 		</Map>
 	)
 }
